@@ -1,0 +1,32 @@
+[Default Applications]
+image/png=org.gnome.gThumb.desktop
+inode/directory=org.gnome.Nautilus.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+video/mp4=vlc.desktop
+text/plain=org.gnome.TextEditor.desktop
+application/x-shellscript=org.gnome.TextEditor.desktop
+application/x-keepass2=org.keepassxc.KeePassXC.desktop
+image/jpeg=org.gnome.Loupe.desktop
+video/webm=vlc.desktop
+application/x-trash=org.gnome.TextEditor.desktop
+application/xml=org.gnome.TextEditor.desktop
+application/pdf=Firefox Formal.desktop
+application/vnd.ms-publisher=org.gnome.TextEditor.desktop
+
+[Added Associations]
+image/png=org.gnome.Loupe.desktop;com.github.weclaw1.ImageRoll.desktop;org.gnome.gThumb.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+video/mp4=vlc.desktop;
+application/octet-stream=org.gnome.TextEditor.desktop;
+text/plain=org.gnome.TextEditor.desktop;
+application/x-shellscript=org.gnome.TextEditor.desktop;
+application/x-keepass2=org.keepassxc.KeePassXC.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+video/webm=org.gnome.Totem.desktop;vlc.desktop;
+application/x-trash=org.gnome.TextEditor.desktop;
+application/xml=org.gnome.TextEditor.desktop;
+x-scheme-handler/sms=org.gnome.Shell.Extensions.GSConnect.desktop;
+x-scheme-handler/tel=org.gnome.Shell.Extensions.GSConnect.desktop;
+application/pdf=firefox.desktop;Firefox Formal.desktop;
+application/x-desktop=io.github.fabrialberio.pinapp.desktop;
+application/vnd.ms-publisher=org.gnome.TextEditor.desktop;
