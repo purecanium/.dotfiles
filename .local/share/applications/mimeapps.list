@@ -1,0 +1,4 @@
+[Default Applications]
+
+[Added Associations]
+x-scheme-handler/ckan=ckan-handler.desktop

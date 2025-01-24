@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=portal2
+MimeType=application/x-wine-extension-dem;
+Exec=env WINEPREFIX="/home/nurph/.wine" wine start /ProgIDOpen Valve.Source %f
+NoDisplay=true
+StartupNotify=true
+Icon=3907_portal2.0

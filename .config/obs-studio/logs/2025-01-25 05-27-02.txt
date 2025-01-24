@@ -1,0 +1,380 @@
+05:27:02.416: Platform: Wayland
+05:27:02.416: CPU Name: AMD Ryzen 5 5500U with Radeon Graphics
+05:27:02.416: CPU Speed: 1796.538MHz
+05:27:02.416: Physical Cores: 6, Logical Cores: 12
+05:27:02.416: Physical Memory: 15368MB Total, 10959MB Free
+05:27:02.416: Kernel Version: Linux 6.12.9-arch1-1
+05:27:02.416: Distribution: "Arch Linux" Unknown
+05:27:02.416: Desktop Environment: GNOME (gnome)
+05:27:02.416: Session Type: wayland
+05:27:02.419: Qt Version: 6.8.1 (runtime), 6.8.1 (compiled)
+05:27:02.419: Portable mode: false
+05:27:02.493: OBS 31.0.0 (linux)
+05:27:02.493: ---------------------------------
+05:27:02.495: ---------------------------------
+05:27:02.495: audio settings reset:
+05:27:02.495: 	samples per sec: 48000
+05:27:02.495: 	speakers:        2
+05:27:02.495: 	max buffering:   960 milliseconds
+05:27:02.495: 	buffering type:  dynamically increasing
+05:27:02.497: ---------------------------------
+05:27:02.497: Initializing OpenGL...
+05:27:02.497: Using EGL/Wayland
+05:27:02.540: Initialized EGL 1.5
+05:27:02.556: Loading up OpenGL on adapter AMD AMD Radeon Graphics (radeonsi, renoir, LLVM 19.1.6, DRM 3.59, 6.12.9-arch1-1)
+05:27:02.556: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 24.3.3-arch1.2, shading language 4.60
+05:27:02.589: ---------------------------------
+05:27:02.589: video settings reset:
+05:27:02.589: 	base resolution:   1920x1080
+05:27:02.589: 	output resolution: 1920x1080
+05:27:02.589: 	downscale filter:  Bicubic
+05:27:02.589: 	fps:               60/1
+05:27:02.589: 	format:            NV12
+05:27:02.589: 	YUV mode:          Rec. 709/Partial
+05:27:02.589: NV12 texture support enabled
+05:27:02.589: P010 texture support not available
+05:27:02.597: Audio monitoring device:
+05:27:02.597: 	name: Default
+05:27:02.597: 	id: default
+05:27:02.598: ---------------------------------
+05:27:02.609: Failed to load 'en-US' text for module: 'decklink-captions.so'
+05:27:02.620: Failed to load 'en-US' text for module: 'decklink-output-ui.so'
+05:27:02.630: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+05:27:02.630: Failed to initialize module 'decklink.so'
+05:27:02.804: [pipewire] Available capture sources:
+05:27:02.805: [pipewire]     - Monitor source
+05:27:02.805: [pipewire]     - Window source
+05:27:02.835: v4l2loopback not installed, virtual camera not registered
+05:27:02.892: VAAPI: API version 1.22
+05:27:02.893: FFmpeg VAAPI H264 encoding supported
+05:27:02.899: FFmpeg VAAPI AV1 encoding not supported
+05:27:02.905: FFmpeg VAAPI HEVC encoding supported
+05:27:02.941: os_dlopen(libnvidia-encode.so.1->libnvidia-encode.so.1): libnvidia-encode.so.1: cannot open shared object file: No such file or directory
+05:27:02.941: 
+05:27:02.942: NVENC not supported
+05:27:02.942: Failed to initialize module 'obs-nvenc.so'
+05:27:03.077: ---------------------------------
+05:27:03.078:   Loaded Modules:
+05:27:03.078:     text-freetype2.so
+05:27:03.078:     rtmp-services.so
+05:27:03.078:     obs-x264.so
+05:27:03.078:     obs-webrtc.so
+05:27:03.078:     obs-vst.so
+05:27:03.078:     obs-transitions.so
+05:27:03.078:     obs-qsv11.so
+05:27:03.078:     obs-outputs.so
+05:27:03.078:     obs-libfdk.so
+05:27:03.078:     obs-filters.so
+05:27:03.078:     obs-ffmpeg.so
+05:27:03.078:     linux-v4l2.so
+05:27:03.078:     linux-pulseaudio.so
+05:27:03.078:     linux-pipewire.so
+05:27:03.078:     linux-jack.so
+05:27:03.078:     linux-capture.so
+05:27:03.078:     linux-alsa.so
+05:27:03.078:     image-source.so
+05:27:03.078:     frontend-tools.so
+05:27:03.078:     decklink-output-ui.so
+05:27:03.078:     decklink-captions.so
+05:27:03.078: ---------------------------------
+05:27:03.078: ---------------------------------
+05:27:03.078: Available Encoders:
+05:27:03.078:   Video Encoders:
+05:27:03.078: 	- ffmpeg_svt_av1 (SVT-AV1)
+05:27:03.078: 	- ffmpeg_aom_av1 (AOM AV1)
+05:27:03.078: 	- ffmpeg_vaapi_tex (FFmpeg VAAPI H.264)
+05:27:03.078: 	- hevc_ffmpeg_vaapi_tex (FFmpeg VAAPI HEVC)
+05:27:03.078: 	- obs_x264 (x264)
+05:27:03.078:   Audio Encoders:
+05:27:03.078: 	- ffmpeg_aac (FFmpeg AAC)
+05:27:03.078: 	- ffmpeg_opus (FFmpeg Opus)
+05:27:03.078: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+05:27:03.078: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+05:27:03.078: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit float))
+05:27:03.078: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+05:27:03.078: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+05:27:03.078: 	- libfdk_aac (libfdk AAC)
+05:27:03.078: ==== Startup complete ===============================================
+05:27:03.117: All scene data cleared
+05:27:03.117: ------------------------------------------------
+05:27:03.123: pulse-input: Server name: 'PulseAudio (on PipeWire 1.2.7) 15.0.0'
+05:27:03.123: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+05:27:03.123: pulse-input: Started recording from 'alsa_output.pci-0000_03_00.6.analog-stereo.monitor' (default)
+05:27:03.124: [Loaded global audio device]: 'Desktop Audio'
+05:27:03.124: pulse-input: Server name: 'PulseAudio (on PipeWire 1.2.7) 15.0.0'
+05:27:03.125: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+05:27:03.125: pulse-input: Started recording from 'alsa_input.pci-0000_03_00.6.analog-stereo' (default)
+05:27:03.125: [Loaded global audio device]: 'Mic/Aux'
+05:27:03.126: PipeWire initialized
+05:27:03.127: Switched to scene 'Scene'
+05:27:03.127: ------------------------------------------------
+05:27:03.127: Loaded scenes:
+05:27:03.127: - scene 'Scene':
+05:27:03.127:     - source: 'Screen Capture (PipeWire)' (pipewire-screen-capture-source)
+05:27:03.127: ------------------------------------------------
+05:27:03.301: [pipewire] Screencast session created
+05:27:03.329: [pipewire] Asking for monitor and window
+05:27:03.359: [pipewire] source selected, setting up screencast
+05:27:03.365: [pipewire] Server version: 1.2.7
+05:27:03.365: [pipewire] Library version: 1.2.7
+05:27:03.365: [pipewire] Header version: 1.2.7
+05:27:03.365: [pipewire] Created stream 0x5d5d22079570
+05:27:03.365: [pipewire] Stream 0x5d5d22079570 state: "connecting" (error: none)
+05:27:03.365: [pipewire] Playing stream 0x5d5d22079570
+05:27:03.365: [pipewire] Stream 0x5d5d22079570 state: "paused" (error: none)
+05:27:03.372: [pipewire] Negotiated format:
+05:27:03.373: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+05:27:03.373: [pipewire]     Modifier: 0x0
+05:27:03.373: [pipewire]     Size: 1920x1080
+05:27:03.373: [pipewire]     Framerate: 0/1
+05:27:03.375: [pipewire] Negotiated format:
+05:27:03.375: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+05:27:03.375: [pipewire]     Modifier: 0x200000000401a01
+05:27:03.375: [pipewire]     Size: 1920x1080
+05:27:03.375: [pipewire]     Framerate: 0/1
+05:27:03.442: [pipewire] Stream 0x5d5d22079570 state: "streaming" (error: none)
+05:27:03.882: adding 42 milliseconds of audio buffering, total audio buffering is now 42 milliseconds (source: Desktop Audio)
+05:27:03.882: 
+05:27:27.394: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d220a7820
+05:27:28.247: Number of remaining views: 1
+05:27:28.247: ---------------------------------
+05:27:28.247: video settings reset:
+05:27:28.247: 	base resolution:   1920x1080
+05:27:28.247: 	output resolution: 1920x1080
+05:27:28.247: 	downscale filter:  Bicubic
+05:27:28.247: 	fps:               60/1
+05:27:28.247: 	format:            NV12
+05:27:28.247: 	YUV mode:          Rec. 709/Partial
+05:27:28.247: NV12 texture support enabled
+05:27:28.247: P010 texture support not available
+05:27:28.251: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d22168ef0
+05:27:34.219: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2212ac40
+05:27:42.389: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b0d590
+05:27:44.465: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2484e870
+05:28:28.468: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b64e40
+05:28:33.584: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248b02a0
+05:28:52.759: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b3de60
+05:28:58.790: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248768f0
+05:29:01.093: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248b0a60
+05:29:15.316: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24358240
+05:29:18.280: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d22168ef0
+05:29:24.210: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23e72550
+05:29:24.925: Settings changed (outputs)
+05:29:24.925: ------------------------------------------------
+05:29:31.780: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2182e5a0
+05:29:32.756: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b62770
+05:29:49.339: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2184b6d0
+05:30:04.668: Settings changed (outputs)
+05:30:04.668: ------------------------------------------------
+05:30:06.130: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24c02ed0
+05:30:07.340: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d21fab8a0, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:09.941: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d21fab8a0, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:09.946: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d238519e0
+05:30:11.109: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d220c4890
+05:30:22.986: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2361a880
+05:30:26.015: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d2163b6e0, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:26.890: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d2163b6e0, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:26.895: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248634b0
+05:30:28.480: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d236dc330
+05:30:29.317: Number of remaining views: 1
+05:30:29.317: ---------------------------------
+05:30:29.317: video settings reset:
+05:30:29.317: 	base resolution:   1920x1080
+05:30:29.317: 	output resolution: 1920x1080
+05:30:29.317: 	downscale filter:  Bicubic
+05:30:29.317: 	fps:               60/1
+05:30:29.317: 	format:            NV12
+05:30:29.317: 	YUV mode:          Rec. 709/Partial
+05:30:29.317: NV12 texture support enabled
+05:30:29.317: P010 texture support not available
+05:30:29.320: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2211fdb0
+05:30:31.315: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d23fcc040, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:32.415: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d23fcc040, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:32.419: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24790610
+05:30:33.165: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d23fcc040, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:33.169: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2208b7f0
+05:30:34.795: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b984d0
+05:30:36.838: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248afe00
+05:30:38.518: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2392a530
+05:30:40.590: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d2372d170, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:40.594: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248f0e60
+05:30:46.334: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d22194fe0
+05:30:48.520: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b98a80
+05:30:49.144: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23cf6b90
+05:30:49.392: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23dba1b0
+05:30:49.721: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21832550
+05:30:50.121: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23dba1b0
+05:30:50.669: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d238702a0
+05:30:51.493: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d216fe3a0
+05:30:51.743: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23a3fbc0
+05:30:56.589: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d23fca140, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:30:56.593: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d220bc140
+05:30:58.201: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d243a1880
+05:31:04.393: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2418c4e0
+05:31:04.523: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2418ebb0
+05:31:08.091: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24a15290
+05:31:11.176: PipeWire initialized
+05:31:11.179: User added source 'Screen Capture (PipeWire) 2' (pipewire-screen-capture-source) to scene 'Scene'
+05:31:11.182: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21c04750
+05:31:11.254: [pipewire] Screencast session created
+05:31:11.259: [pipewire] Asking for monitor and window
+05:31:20.669: [pipewire] Failed to start screencast, denied or cancelled by user
+05:31:21.472: PipeWire initialized
+05:31:21.475: [pipewire] Screencast session created
+05:31:21.477: [pipewire] Asking for monitor and window
+05:31:25.709: [pipewire] source selected, setting up screencast
+05:31:25.712: [pipewire] Server version: 1.2.7
+05:31:25.712: [pipewire] Library version: 1.2.7
+05:31:25.712: [pipewire] Header version: 1.2.7
+05:31:25.712: [pipewire] Created stream 0x5d5d235e1fc0
+05:31:25.712: [pipewire] Stream 0x5d5d235e1fc0 state: "connecting" (error: none)
+05:31:25.712: [pipewire] Playing stream 0x5d5d235e1fc0
+05:31:25.713: [pipewire] Stream 0x5d5d235e1fc0 state: "paused" (error: none)
+05:31:25.721: [pipewire] Negotiated format:
+05:31:25.721: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+05:31:25.721: [pipewire]     Modifier: 0x0
+05:31:25.721: [pipewire]     Size: 1920x1080
+05:31:25.721: [pipewire]     Framerate: 0/1
+05:31:25.725: [pipewire] Negotiated format:
+05:31:25.725: [pipewire]     Format: 12 (Spa:Enum:VideoFormat:BGRA)
+05:31:25.725: [pipewire]     Modifier: 0x200000000401a01
+05:31:25.725: [pipewire]     Size: 1920x1080
+05:31:25.725: [pipewire]     Framerate: 0/1
+05:31:25.826: [pipewire] Stream 0x5d5d235e1fc0 state: "streaming" (error: none)
+05:31:27.602: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23c4b1a0
+05:31:31.853: [pipewire] Stream 0x5d5d22079570 state: "paused" (error: none)
+05:31:36.643: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d243fda20
+05:31:37.398: User Removed source 'Screen Capture (PipeWire)' (pipewire-screen-capture-source) from scene 'Scene'
+05:31:37.398: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24417a90
+05:31:37.400: [pipewire] Stream 0x5d5d22079570 state: "unconnected" (error: none)
+05:31:50.940: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d24898060, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:31:50.947: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21b279d0
+05:31:52.322: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d22151f80
+05:32:26.597: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d1fe184c0
+05:32:28.430: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d241d4fc0
+05:32:33.798: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d248f0db0
+05:32:37.613: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d243d8c20
+05:32:39.999: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23c0f010
+05:32:42.043: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d243d8c20
+05:33:13.449: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d241d42a0
+05:33:21.166: Creating a popup with a parent, QWidgetWindow(0x5d5d1fc8de50, name="OBSBasicWindow") which does not match the current topmost grabbing popup, QWidgetWindow(0x5d5d243d0770, name="QMenuClassWindow") With some shell surface protocols, this is not allowed. The wayland QPA plugin is currently handling it by setting the parent to the topmost grabbing popup. Note, however, that this may cause positioning errors and popups closing unxpectedly. Please fix the transient parent of the popup.
+05:33:26.044: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d241d4eb0
+05:33:36.721: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24b9c750
+05:33:41.496: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24a06680
+05:33:41.744: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2341dbf0
+05:33:42.391: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d23d9b180
+05:33:43.120: Number of remaining views: 1
+05:33:43.120: ---------------------------------
+05:33:43.120: video settings reset:
+05:33:43.120: 	base resolution:   1920x1080
+05:33:43.120: 	output resolution: 1920x1080
+05:33:43.120: 	downscale filter:  Bicubic
+05:33:43.120: 	fps:               60/1
+05:33:43.120: 	format:            NV12
+05:33:43.120: 	YUV mode:          Rec. 709/Partial
+05:33:43.120: NV12 texture support enabled
+05:33:43.120: P010 texture support not available
+05:33:43.124: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d2350dc30
+05:33:45.377: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d24bcbad0
+05:33:57.810: ==== Shutting down ==================================================
+05:33:57.814: pulse-input: Stopped recording from 'alsa_output.pci-0000_03_00.6.analog-stereo.monitor'
+05:33:57.814: pulse-input: Got 16579 packets with 19894800 frames
+05:33:57.814: pulse-input: Stopped recording from 'alsa_input.pci-0000_03_00.6.analog-stereo'
+05:33:57.814: pulse-input: Got 16577 packets with 19892400 frames
+05:33:57.815: [pipewire] Stream 0x5d5d235e1fc0 state: "paused" (error: none)
+05:33:57.816: [pipewire] Stream 0x5d5d235e1fc0 state: "unconnected" (error: none)
+05:33:57.861: All scene data cleared
+05:33:57.861: ------------------------------------------------
+05:33:57.870: virtual void QtWaylandClient::QWaylandTextInputv3::zwp_text_input_v3_leave(wl_surface*) Got leave event for surface 0x0 focused surface 0x5d5d21799a30
+05:33:57.906: [Scripting] Total detached callbacks: 0
+05:33:57.906: Freeing OBS context data
+05:33:57.929: == Profiler Results =============================
+05:33:57.929: run_program_init: 855.09 ms
+05:33:57.929:  ┣OBSApp::AppInit: 20.415 ms
+05:33:57.929:  ┃ ┗OBSApp::InitLocale: 2.144 ms
+05:33:57.929:  ┗OBSApp::OBSInit: 735.81 ms
+05:33:57.929:    ┣obs_startup: 3.093 ms
+05:33:57.929:    ┗OBSBasic::OBSInit: 658.057 ms
+05:33:57.929:      ┣OBSBasic::InitBasicConfig: 1.182 ms
+05:33:57.929:      ┣OBSBasic::ResetAudio: 0.308 ms
+05:33:57.929:      ┣OBSBasic::ResetVideo: 102.321 ms
+05:33:57.929:      ┃ ┗obs_init_graphics: 94.226 ms
+05:33:57.929:      ┃   ┗shader compilation: 32.232 ms
+05:33:57.929:      ┣OBSBasic::InitOBSCallbacks: 0.007 ms
+05:33:57.929:      ┣OBSBasic::InitHotkeys: 0.056 ms
+05:33:57.929:      ┣obs_load_all_modules2: 479.32 ms
+05:33:57.929:      ┃ ┣obs_init_module(decklink-captions.so): 0.001 ms
+05:33:57.929:      ┃ ┣obs_init_module(decklink-output-ui.so): 0.002 ms
+05:33:57.929:      ┃ ┣obs_init_module(decklink.so): 0.264 ms
+05:33:57.929:      ┃ ┣obs_init_module(frontend-tools.so): 82.612 ms
+05:33:57.929:      ┃ ┣obs_init_module(image-source.so): 0.01 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-alsa.so): 0.003 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-capture.so): 0.001 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-jack.so): 0.006 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-pipewire.so): 16.456 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-pulseaudio.so): 0.007 ms
+05:33:57.929:      ┃ ┣obs_init_module(linux-v4l2.so): 7.443 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-ffmpeg.so): 19.059 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-filters.so): 0.03 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-libfdk.so): 0.002 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-nvenc.so): 0.281 ms
+05:33:57.929:      ┃ ┃ ┗nvenc_check: 0.262 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-outputs.so): 0.007 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-qsv11.so): 12.31 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-transitions.so): 0.009 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-vst.so): 0.006 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-webrtc.so): 0.006 ms
+05:33:57.929:      ┃ ┣obs_init_module(obs-x264.so): 0.003 ms
+05:33:57.929:      ┃ ┣obs_init_module(rtmp-services.so): 1.727 ms
+05:33:57.929:      ┃ ┗obs_init_module(text-freetype2.so): 0.015 ms
+05:33:57.929:      ┣OBSBasic::InitService: 2.267 ms
+05:33:57.929:      ┣OBSBasic::ResetOutputs: 0.199 ms
+05:33:57.929:      ┣OBSBasic::CreateHotkeys: 0.025 ms
+05:33:57.929:      ┣OBSBasic::InitPrimitives: 0.082 ms
+05:33:57.929:      ┗OBSBasic::Load: 47.487 ms
+05:33:57.929: obs_hotkey_thread(25 ms): min=0.001 ms, median=0.002 ms, max=0.041 ms, 99th percentile=0.003 ms, 100% below 25 ms
+05:33:57.929: audio_thread(Audio): min=0.014 ms, median=0.079 ms, max=2.498 ms, 99th percentile=0.36 ms
+05:33:57.929: obs_graphics_thread(16.6667 ms): min=0.197 ms, median=1.085 ms, max=48.612 ms, 99th percentile=3.25 ms, 99.8048% below 16.667 ms
+05:33:57.929:  ┣tick_sources: min=0.001 ms, median=0.012 ms, max=33.02 ms, 99th percentile=1.935 ms
+05:33:57.929:  ┣output_frame: min=0.168 ms, median=0.591 ms, max=4.282 ms, 99th percentile=0.865 ms
+05:33:57.929:  ┃ ┗gs_context(video->graphics): min=0.165 ms, median=0.588 ms, max=4.268 ms, 99th percentile=0.861 ms
+05:33:57.929:  ┃   ┣render_video: min=0.019 ms, median=0.193 ms, max=0.513 ms, 99th percentile=0.262 ms
+05:33:57.929:  ┃   ┃ ┗render_main_texture: min=0.01 ms, median=0.183 ms, max=0.505 ms, 99th percentile=0.252 ms
+05:33:57.929:  ┃   ┗gs_flush: min=0.003 ms, median=0.372 ms, max=0.872 ms, 99th percentile=0.616 ms
+05:33:57.929:  ┗render_displays: min=0.005 ms, median=0.433 ms, max=48.053 ms, 99th percentile=0.74 ms
+05:33:57.929: OBSBasic::ResetVideo: min=8.375 ms, median=10.034 ms, max=15.985 ms, 99th percentile=15.985 ms
+05:33:57.929: obs_graphics_thread(16.6667 ms): min=0.527 ms, median=1.073 ms, max=9.721 ms, 99th percentile=1.441 ms, 100% below 16.667 ms
+05:33:57.929:  ┣tick_sources: min=0.005 ms, median=0.014 ms, max=0.089 ms, 99th percentile=0.02 ms
+05:33:57.929:  ┣output_frame: min=0.244 ms, median=0.593 ms, max=1.213 ms, 99th percentile=0.863 ms
+05:33:57.929:  ┃ ┗gs_context(video->graphics): min=0.241 ms, median=0.59 ms, max=1.207 ms, 99th percentile=0.859 ms
+05:33:57.929:  ┃   ┣render_video: min=0.067 ms, median=0.196 ms, max=0.582 ms, 99th percentile=0.245 ms
+05:33:57.929:  ┃   ┃ ┗render_main_texture: min=0.063 ms, median=0.187 ms, max=0.574 ms, 99th percentile=0.233 ms
+05:33:57.929:  ┃   ┗gs_flush: min=0.153 ms, median=0.376 ms, max=0.984 ms, 99th percentile=0.649 ms
+05:33:57.929:  ┗render_displays: min=0.207 ms, median=0.44 ms, max=9.189 ms, 99th percentile=0.655 ms
+05:33:57.929: OBSBasic::ResetOutputs: min=0.135 ms, median=0.18 ms, max=0.217 ms, 99th percentile=0.217 ms
+05:33:57.929: OBSBasicSettings::LoadThemeList: min=0.046 ms, median=0 ms, max=0.078 ms, 99th percentile=0.078 ms
+05:33:57.929: obs_graphics_thread(16.6667 ms): min=0.46 ms, median=1.13 ms, max=54.506 ms, 99th percentile=2.692 ms, 99.9914% below 16.667 ms
+05:33:57.929:  ┣tick_sources: min=0.004 ms, median=0.013 ms, max=3.165 ms, 99th percentile=1.557 ms
+05:33:57.929:  ┣output_frame: min=0.207 ms, median=0.57 ms, max=1.493 ms, 99th percentile=0.823 ms
+05:33:57.929:  ┃ ┗gs_context(video->graphics): min=0.204 ms, median=0.566 ms, max=1.491 ms, 99th percentile=0.818 ms
+05:33:57.929:  ┃   ┣render_video: min=0.057 ms, median=0.187 ms, max=0.927 ms, 99th percentile=0.292 ms
+05:33:57.929:  ┃   ┃ ┗render_main_texture: min=0.053 ms, median=0.178 ms, max=0.917 ms, 99th percentile=0.282 ms
+05:33:57.929:  ┃   ┗gs_flush: min=0.129 ms, median=0.362 ms, max=1.314 ms, 99th percentile=0.505 ms
+05:33:57.929:  ┗render_displays: min=0.179 ms, median=0.503 ms, max=53.925 ms, 99th percentile=0.939 ms
+05:33:57.929: obs_graphics_thread(16.6667 ms): min=0.418 ms, median=1.019 ms, max=1.667 ms, 99th percentile=1.363 ms, 100% below 16.667 ms
+05:33:57.929:  ┣tick_sources: min=0.002 ms, median=0.013 ms, max=0.025 ms, 99th percentile=0.02 ms
+05:33:57.929:  ┣output_frame: min=0.316 ms, median=0.532 ms, max=1.067 ms, 99th percentile=0.815 ms
+05:33:57.929:  ┃ ┗gs_context(video->graphics): min=0.313 ms, median=0.529 ms, max=1.064 ms, 99th percentile=0.81 ms
+05:33:57.929:  ┃   ┣render_video: min=0.028 ms, median=0.189 ms, max=0.492 ms, 99th percentile=0.274 ms
+05:33:57.929:  ┃   ┃ ┗render_main_texture: min=0.021 ms, median=0.18 ms, max=0.483 ms, 99th percentile=0.265 ms
+05:33:57.929:  ┃   ┗gs_flush: min=0.195 ms, median=0.323 ms, max=0.862 ms, 99th percentile=0.566 ms
+05:33:57.929:  ┗render_displays: min=0.01 ms, median=0.411 ms, max=0.987 ms, 99th percentile=0.622 ms
+05:33:57.929: =================================================
+05:33:57.929: == Profiler Time Between Calls ==================
+05:33:57.929: obs_hotkey_thread(25 ms): min=25.032 ms, median=25.119 ms, max=27.37 ms, 99.2612% within ±2% of 25 ms (0% lower, 0.738767% higher)
+05:33:57.930: obs_graphics_thread(16.6667 ms): min=2.921 ms, median=16.667 ms, max=48.623 ms, 97.6562% within ±2% of 16.667 ms (1.17188% lower, 1.17188% higher)
+05:33:57.930: obs_graphics_thread(16.6667 ms): min=16.028 ms, median=16.666 ms, max=17.315 ms, 97.717% within ±2% of 16.667 ms (1.00341% lower, 1.27957% higher)
+05:33:57.930: obs_graphics_thread(16.6667 ms): min=12.194 ms, median=16.667 ms, max=54.516 ms, 98.6753% within ±2% of 16.667 ms (0.627957% lower, 0.696774% higher)
+05:33:57.930: obs_graphics_thread(16.6667 ms): min=16.278 ms, median=16.667 ms, max=17.076 ms, 98.4181% within ±2% of 16.667 ms (0.564972% lower, 1.01695% higher)
+05:33:57.930: =================================================
+05:33:57.946: Number of memory leaks: 0

@@ -45,7 +45,7 @@
         "volume": 1.0,
         "balance": 0.5,
         "enabled": true,
-        "muted": false,
+        "muted": true,
         "push-to-mute": false,
         "push-to-mute-delay": 0,
         "push-to-talk": false,
@@ -77,12 +77,12 @@
             "id": "scene",
             "versioned_id": "scene",
             "settings": {
-                "id_counter": 1,
+                "id_counter": 5,
                 "custom_size": false,
                 "items": [
                     {
-                        "name": "Screen Capture (PipeWire)",
-                        "source_uuid": "520a8eea-a275-42a6-b257-81a9a02cc07a",
+                        "name": "Screen Capture (PipeWire) 2",
+                        "source_uuid": "dc597956-c2f3-4460-a094-8225d4fd4abc",
                         "visible": true,
                         "locked": false,
                         "rot": 0.0,
@@ -98,7 +98,7 @@
                         "crop_top": 0,
                         "crop_right": 0,
                         "crop_bottom": 0,
-                        "id": 1,
+                        "id": 5,
                         "group_item_backup": false,
                         "pos": {
                             "x": 0.0,
@@ -150,8 +150,8 @@
             "push-to-talk-delay": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.show_scene_item.1": [],
-                "libobs.hide_scene_item.1": []
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": []
             },
             "deinterlace_mode": 0,
             "deinterlace_field_order": 0,
@@ -160,12 +160,12 @@
         },
         {
             "prev_ver": 520093696,
-            "name": "Screen Capture (PipeWire)",
-            "uuid": "520a8eea-a275-42a6-b257-81a9a02cc07a",
+            "name": "Screen Capture (PipeWire) 2",
+            "uuid": "dc597956-c2f3-4460-a094-8225d4fd4abc",
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": "11546776-7a87-4ebf-88ed-d8fad459c19d"
+                "RestoreToken": "cf874b31-4433-468d-b04e-66552f2b2fd7"
             },
             "mixers": 0,
             "sync": 0,
@@ -238,6 +238,10 @@
             "active": false,
             "switches": []
         }
+    },
+    "resolution": {
+        "x": 1920,
+        "y": 1080
     },
     "version": 2
 }
