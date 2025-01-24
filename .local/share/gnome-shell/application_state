@@ -9,19 +9,20 @@
     <application id="org.gnome.tweaks.desktop" score="47" last-seen="1737593886"/>
     <application id="vlc.desktop" score="1606" last-seen="1737664093"/>
     <application id="org.gnome.Music.desktop" score="4" last-seen="1737575852"/>
+    <application id="org.gnome.Shell.Extensions.GSConnect.Preferences.desktop" score="4" last-seen="1737756955"/>
     <application id="qvidcap.desktop" score="0" last-seen="1737249172"/>
     <application id="discord.desktop" score="13" last-seen="1737393996"/>
     <application id="steam.desktop" score="987" last-seen="1737577177"/>
     <application id="qt5ct.desktop" score="18" last-seen="1737393854"/>
     <application id="net.lutris.Lutris.desktop" score="234" last-seen="1737519431"/>
-    <application id="Firefox Casual.desktop" score="12444" last-seen="1737756410"/>
+    <application id="Firefox Casual.desktop" score="12466" last-seen="1737758656"/>
     <application id="codium-wayland.desktop" score="135" last-seen="1737593472"/>
     <application id="org.gnome.Software.desktop" score="443" last-seen="1737753853"/>
     <application id="Firefox Formal.desktop" score="6209" last-seen="1737754446"/>
     <application id="org.gnome.Tecla.desktop" score="1" last-seen="1737377954"/>
-    <application id="org.gnome.Console.desktop" score="18188" last-seen="1737756362"/>
+    <application id="org.gnome.Console.desktop" score="18461" last-seen="1737758644"/>
     <application id="heroic.desktop" score="127" last-seen="1737506262"/>
-    <application id="org.gnome.Settings.desktop" score="8948" last-seen="1737755532"/>
+    <application id="org.gnome.Settings.desktop" score="8951" last-seen="1737757900"/>
     <application id="org.pitivi.Pitivi.desktop" score="4" last-seen="1737414262"/>
     <application id="io.github.giantpinkrobots.varia.desktop" score="14" last-seen="1737750324"/>
     <application id="org.gnome.Calculator.desktop" score="3" last-seen="1737594055"/>
