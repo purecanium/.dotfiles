@@ -1,6 +1,6 @@
 {
     "DesktopAudioDevice1": {
-        "prev_ver": 520093696,
+        "prev_ver": 520093697,
         "name": "Desktop Audio",
         "uuid": "6ea54102-c99d-46ae-b672-4dac0ea976b0",
         "id": "pulse_output_capture",
@@ -31,7 +31,7 @@
         "private_settings": {}
     },
     "AuxAudioDevice1": {
-        "prev_ver": 520093696,
+        "prev_ver": 520093697,
         "name": "Mic/Aux",
         "uuid": "ad098b17-21e6-48a8-854a-2f4921dac61e",
         "id": "pulse_input_capture",
@@ -71,7 +71,7 @@
     "name": "Untitled",
     "sources": [
         {
-            "prev_ver": 520093696,
+            "prev_ver": 520093697,
             "name": "Scene",
             "uuid": "0c7bdfcf-d458-491f-9ba7-9532c6274fac",
             "id": "scene",
@@ -91,10 +91,10 @@
                             "y": 1080.0
                         },
                         "align": 5,
-                        "bounds_type": 2,
+                        "bounds_type": 0,
                         "bounds_align": 0,
                         "bounds_crop": false,
-                        "crop_left": 960,
+                        "crop_left": 0,
                         "crop_top": 0,
                         "crop_right": 0,
                         "crop_bottom": 0,
@@ -117,12 +117,12 @@
                             "y": 1.0
                         },
                         "bounds": {
-                            "x": 1920.0,
-                            "y": 1080.0
+                            "x": 0.0,
+                            "y": 0.0
                         },
                         "bounds_rel": {
-                            "x": 3.5555555820465088,
-                            "y": 2.0
+                            "x": 0.0,
+                            "y": 0.0
                         },
                         "scale_filter": "disable",
                         "blend_method": "default",
@@ -159,13 +159,13 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 520093696,
+            "prev_ver": 520093697,
             "name": "Screen Capture (PipeWire) 2",
             "uuid": "dc597956-c2f3-4460-a094-8225d4fd4abc",
             "id": "pipewire-screen-capture-source",
             "versioned_id": "pipewire-screen-capture-source",
             "settings": {
-                "RestoreToken": "cf874b31-4433-468d-b04e-66552f2b2fd7"
+                "RestoreToken": "883c57db-bfae-4681-b6b5-1625e68df72c"
             },
             "mixers": 0,
             "sync": 0,

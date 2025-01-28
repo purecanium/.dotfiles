@@ -71,7 +71,7 @@ export default class EditDesktopFilesExtension extends Extension {
                             let customEditCommand = settings.get_string("custom-edit-command")
                             // If the user forgot to include %U in the command, fallback to the default with a warning
                             if (customEditCommand.indexOf('%U') != -1) {
-                                editCommand = customEditCommand.replace('%U', `'${appInfo.filename}'`)
+                                editCommand = customEditCommand.replaceAll('%U', `'${appInfo.filename}'`)
                             } else {
                                 console.warn(`${metadata.name}: Custom edit command is missing '%U', falling back to default GNOME Text Editor`)
                             }

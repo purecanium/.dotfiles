@@ -9,6 +9,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
 export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_QPA_PLATFORM=xcb obs
 
 export ANDROID_HOME=~/Android/Sdk
 export ANDROID_USER_HOME=$HOME/.android
