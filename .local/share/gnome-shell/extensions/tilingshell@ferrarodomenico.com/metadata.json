@@ -11,10 +11,11 @@
   "shell-version": [
     "45",
     "46",
-    "47"
+    "47",
+    "48"
   ],
   "url": "https://github.com/domferr/tilingshell",
   "uuid": "tilingshell@ferrarodomenico.com",
-  "version": 48,
-  "version-name": "16.1"
+  "version": 49,
+  "version-name": "16.2"
 }

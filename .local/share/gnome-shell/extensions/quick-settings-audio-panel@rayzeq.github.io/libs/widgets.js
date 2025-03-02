@@ -6,36 +6,13 @@ import Gvc from 'gi://Gvc';
 import St from 'gi://St';
 import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
-import { Ornament, PopupBaseMenuItem, PopupMenuItem, PopupMenuSection } from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import { Ornament, PopupBaseMenuItem, PopupImageMenuItem, PopupMenuItem, PopupMenuSection } from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import { QuickMenuToggle, QuickSlider, QuickToggle } from 'resource:///org/gnome/shell/ui/quickSettings.js';
 import * as Volume from 'resource:///org/gnome/shell/ui/status/volume.js';
-import { get_pactl_path, spawn } from "./utils.js";
-export function waitProperty(object, name) {
-    if (!waitProperty.idle_ids) {
-        waitProperty.idle_ids = [];
-    }
-    return new Promise((resolve, _reject) => {
-        // very ugly hack
-        const id_pointer = {};
-        const id = GLib.idle_add(GLib.PRIORITY_DEFAULT, waitPropertyLoop.bind(this, resolve, id_pointer));
-        id_pointer.id = id;
-        waitProperty.idle_ids.push(id);
-    });
-    function waitPropertyLoop(resolve, pointer) {
-        if (object[name]) {
-            const index = waitProperty.idle_ids.indexOf(pointer.id);
-            if (index !== -1) {
-                waitProperty.idle_ids.splice(index, 1);
-            }
-            resolve(object[name]);
-            return GLib.SOURCE_REMOVE;
-        }
-        return GLib.SOURCE_CONTINUE;
-    }
-}
+import { get_pactl_path, spawn, wait_property } from "./utils.js";
 const { MixerSinkInput, MixerSink } = Gvc;
 // `_volumeOutput` is set in an async function, so we need to ensure that it's currently defined
-const OutputStreamSlider = (await waitProperty(Main.panel.statusArea.quickSettings, '_volumeOutput'))._output.constructor;
+const OutputStreamSlider = (await wait_property(Main.panel.statusArea.quickSettings, "_volumeOutput"))._output.constructor;
 const StreamSlider = Object.getPrototypeOf(OutputStreamSlider);
 export class SinkMixer {
     panel;
@@ -145,7 +122,9 @@ const SinkVolumeSlider = GObject.registerClass(class SinkVolumeSlider extends St
                         this._name_binding.unbind();
                     // using the text from the output switcher of the master slider to allow compatibility with extensions
                     // that changes it (like Quick Settings Audio Device Renamer)
-                    this._name_binding = Main.panel.statusArea.quickSettings._volumeOutput._output._deviceItems.get(device.get_id()).label.bind_property('text', label, 'text', GObject.BindingFlags.SYNC_CREATE);
+                    const deviceItem = Main.panel.statusArea.quickSettings._volumeOutput._output._deviceItems.get(device.get_id());
+                    if (deviceItem)
+                        this._name_binding = deviceItem.label.bind_property('text', label, 'text', GObject.BindingFlags.SYNC_CREATE);
                 };
                 let signal = stream.connect("notify::port", updater);
                 updater();
@@ -384,9 +363,9 @@ class ApplicationsMixerManager {
         this.on_slider_added(slider);
     }
     _stream_removed(_control, id) {
-        if (!this._sliders.has(id))
-            return;
         const slider = this._sliders.get(id);
+        if (slider === undefined)
+            return;
         this.on_slider_removed(slider);
         this._sliders.delete(id);
         slider.destroy();
@@ -557,6 +536,29 @@ const ApplicationVolumeSlider = GObject.registerClass(class ApplicationVolumeSli
                 }
             }
         });
+    }
+    _addDevice(id) {
+        if (this._deviceItems.has(id))
+            return;
+        const device = this._lookupDevice(id);
+        if (!device)
+            return;
+        const item = new PopupImageMenuItem("", device.get_gicon());
+        // using the text from the output switcher of the master slider to allow compatibility with extensions
+        // that changes it (like Quick Settings Audio Device Renamer)
+        const deviceItem = Main.panel.statusArea.quickSettings._volumeOutput._output._deviceItems.get(device.get_id());
+        if (deviceItem)
+            deviceItem.label.bind_property('text', item.label, 'text', GObject.BindingFlags.SYNC_CREATE);
+        item.connect('activate', () => {
+            const dev = this._lookupDevice(id);
+            if (dev)
+                this._activateDevice(dev);
+            else
+                console.warn(`Trying to activate invalid device ${id}`);
+        });
+        this._deviceSection.addMenuItem(item);
+        this._deviceItems.set(id, item);
+        this._sync();
     }
     _lookupDevice(id) {
         return this._control.lookup_output_id(id);

@@ -7,6 +7,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_BIN_HOME="$HOME/.local/bin"
+export PATH=$PATH:$HOME/.local/bin
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_QPA_PLATFORM=xcb obs
@@ -14,7 +15,6 @@ export QT_QPA_PLATFORM=xcb obs
 export ANDROID_HOME=~/Android/Sdk
 export ANDROID_USER_HOME=$HOME/.android
 export PATH=$PATH:$ANDROID_HOME/platforms:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/.local/bin
 
 export MOLD_JOBS=1
 export CARGO_TARGET_DIR=/tmp/mytarget
@@ -24,9 +24,9 @@ export CARGO_TARGET_DIR=/tmp/mytarget
 
 # xdg-ninja
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export PATH="$PATH:$DOTNET_CLI_HOME/.dotnet/tools"
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-
+export HISTFILE="$XDG_STATE_HOME"/bash/history
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-

@@ -31,6 +31,9 @@ import Atk from "gi://Atk";
 import Pango from "gi://Pango";
 
 // src/utils/logger.ts
+function rect_to_string(rect) {
+  return `{x: ${rect.x}, y: ${rect.y}, width: ${rect.width}, height: ${rect.height}}`;
+}
 var logger = (prefix) => (...content) => console.log("[tilingshell]", `[${prefix}]`, ...content);
 
 // src/utils/ui.ts
@@ -155,6 +158,13 @@ function getWindows(workspace) {
 }
 function squaredEuclideanDistance(pointA, pointB) {
   return (pointA.x - pointB.x) * (pointA.x - pointB.x) + (pointA.y - pointB.y) * (pointA.y - pointB.y);
+}
+function setWidgetOrientation(widget, vertical) {
+  if (widget.orientation) {
+    widget.orientation = vertical ? Clutter.Orientation.VERTICAL : Clutter.Orientation.HORIZONTAL;
+  } else {
+    widget.vertical = vertical;
+  }
 }
 
 // src/utils/gjs.ts
@@ -845,15 +855,17 @@ var GlobalState = class extends GObject.Object {
           n_workspaces - 2
         );
         const secondLastWsLayoutsId = secondLastWs ? this._selected_layouts.get(secondLastWs) ?? [] : [];
-        debug(
-          `second-last workspace length ${secondLastWsLayoutsId.length}`
-        );
-        const layout = this._layouts.find(
-          (lay) => secondLastWsLayoutsId.find((id) => id === lay.id)
-        ) ?? this._layouts[0];
+        if (secondLastWsLayoutsId.length === 0) {
+          secondLastWsLayoutsId.push(
+            ...Main2.layoutManager.monitors.map(
+              () => this._layouts[0].id
+            )
+          );
+        }
         this._selected_layouts.set(
           newWs,
-          Main2.layoutManager.monitors.map(() => layout.id)
+          secondLastWsLayoutsId
+          // Main.layoutManager.monitors.map(() => layout.id),
         );
         const to_be_saved = [];
         for (let i = 0; i < n_workspaces; i++) {
@@ -1945,14 +1957,15 @@ var TilingLayout = class extends LayoutWidget {
     }
     return [true, results];
   }
-  findNearestTileDirection(source, direction) {
+  // enlarge the side of the direction and search a tile that contains that point
+  // clamp to ensure we do not go outside of the container area (e.g. the screen)
+  findNearestTileDirection(source, direction, clamp, enlarge) {
     if (direction === 1 /* NODIRECTION */)
       return void 0;
     const sourceCoords = {
       x: source.x + source.width / 2,
       y: source.y + source.height / 2
     };
-    const enlarge = 64;
     switch (direction) {
       case 5 /* RIGHT */:
         sourceCoords.x = source.x + source.width + enlarge;
@@ -1967,8 +1980,20 @@ var TilingLayout = class extends LayoutWidget {
         sourceCoords.y = source.y - enlarge;
         break;
     }
-    if (sourceCoords.x < this._containerRect.x || sourceCoords.x > this._containerRect.width + this._containerRect.x || sourceCoords.y < this._containerRect.y || sourceCoords.y > this._containerRect.height + this._containerRect.y)
-      return void 0;
+    if (sourceCoords.x < this._containerRect.x || sourceCoords.x > this._containerRect.width + this._containerRect.x || sourceCoords.y < this._containerRect.y || sourceCoords.y > this._containerRect.height + this._containerRect.y) {
+      if (!clamp)
+        return void 0;
+      sourceCoords.x = Math.clamp(
+        sourceCoords.x,
+        this._containerRect.x,
+        this._containerRect.width + this._containerRect.x
+      );
+      sourceCoords.y = Math.clamp(
+        sourceCoords.y,
+        this._containerRect.y,
+        this._containerRect.height + this._containerRect.y
+      );
+    }
     for (let i = 0; i < this._previews.length; i++) {
       const previewFound = this._previews[i];
       if (isPointInsideRect(sourceCoords, previewFound.rect)) {
@@ -2141,7 +2166,6 @@ var SnapAssistContent = class extends St.BoxLayout {
       name: "snap_assist_content",
       xAlign: Clutter.ActorAlign.CENTER,
       yAlign: Clutter.ActorAlign.CENTER,
-      vertical: false,
       reactive: true,
       styleClass: "popup-menu-content snap-assistant"
     });
@@ -3344,11 +3368,11 @@ var SuggestionsTilePreview = class extends TilePreview {
     this.reactive = true;
     this.layout_manager = new Clutter.BinLayout();
     this._container = new St.BoxLayout({
-      vertical: true,
       x_expand: true,
       y_align: Clutter.ActorAlign.CENTER,
       style: `spacing: ${MASONRY_LAYOUT_SPACING}px;`
     });
+    setWidgetOrientation(this._container, true);
     this._scrollView = new St.ScrollView({
       style_class: "vfade",
       vscrollbar_policy: St.PolicyType.AUTOMATIC,
@@ -3439,7 +3463,6 @@ var SuggestionsTilePreview = class extends TilePreview {
     );
     placements.forEach((row) => {
       const rowBox = new St.BoxLayout({
-        vertical: false,
         x_align: Clutter.ActorAlign.CENTER,
         style: `spacing: ${MASONRY_LAYOUT_SPACING}px;`
       });
@@ -3944,7 +3967,7 @@ var TilingManager = class {
     this._easeWindowRect(window, destination, false, force);
     window.assignedTile = void 0;
   }
-  onKeyboardMoveWindow(window, direction, force, spanFlag) {
+  onKeyboardMoveWindow(window, direction, force, spanFlag, clamp) {
     let destination;
     if (spanFlag && window.get_maximized())
       return false;
@@ -3983,14 +4006,22 @@ var TilingManager = class {
         tile: TileUtils.build_tile(rect, this._workArea)
       };
     } else if (window.get_monitor() === this._monitor.index) {
+      const maxGap = Math.max(
+        tilingLayout.innerGaps.right,
+        tilingLayout.innerGaps.left,
+        tilingLayout.innerGaps.right,
+        tilingLayout.innerGaps.bottom
+      );
       destination = tilingLayout.findNearestTileDirection(
         windowRectCopy,
-        direction
+        direction,
+        clamp,
+        3 * maxGap
       );
     } else {
       destination = tilingLayout.findNearestTile(windowRectCopy);
     }
-    if (window.get_monitor() === this._monitor.index && destination && window.assignedTile && window.assignedTile?.x === destination.tile.x && window.assignedTile?.y === destination.tile.y && window.assignedTile?.width === destination.tile.width && window.assignedTile?.height === destination.tile.height)
+    if (window.get_monitor() === this._monitor.index && destination && !window.maximizedHorizontally && !window.maximizedVertically && window.assignedTile && window.assignedTile?.x === destination.tile.x && window.assignedTile?.y === destination.tile.y && window.assignedTile?.width === destination.tile.width && window.assignedTile?.height === destination.tile.height)
       return true;
     if (!destination) {
       if (spanFlag)
@@ -5333,8 +5364,6 @@ var createIconButton = (iconName, path, spacing = 0) => {
     xExpand: true,
     style: "padding-left: 5px !important; padding-right: 5px !important;",
     child: new St.BoxLayout({
-      vertical: false,
-      // horizontal box layout
       clipToAllocation: true,
       xAlign: Clutter.ActorAlign.CENTER,
       yAlign: Clutter.ActorAlign.CENTER,
@@ -5428,16 +5457,14 @@ var LayoutsRow = class extends St.BoxLayout {
       yAlign: Clutter.ActorAlign.CENTER,
       xExpand: true,
       yExpand: true,
-      vertical: true,
       style: "spacing: 8px"
     });
+    setWidgetOrientation(this, true);
     this._layoutsBox = new St.BoxLayout({
       xAlign: Clutter.ActorAlign.CENTER,
       yAlign: Clutter.ActorAlign.CENTER,
       xExpand: true,
       yExpand: true,
-      vertical: false,
-      // horizontal box layout
       styleClass: "layouts-box-layout"
     });
     this._monitor = monitor;
@@ -5523,9 +5550,9 @@ var DefaultMenu = class {
       yAlign: Clutter.ActorAlign.CENTER,
       xExpand: true,
       yExpand: true,
-      vertical: true,
       styleClass: "default-menu-container"
     });
+    setWidgetOrientation(this._container, true);
     layoutsPopupMenu.add_child(this._container);
     this._indicator.menu.addMenuItem(
       layoutsPopupMenu
@@ -5647,8 +5674,6 @@ var DefaultMenu = class {
       yAlign: Clutter.ActorAlign.CENTER,
       xExpand: true,
       yExpand: true,
-      vertical: false,
-      // horizontal box layout
       styleClass: "buttons-box-layout"
     });
     const editLayoutsBtn = createButton(
@@ -5731,11 +5756,11 @@ var EditingMenu = class {
   constructor(indicator) {
     this._indicator = indicator;
     const boxLayout = new St.BoxLayout({
-      vertical: true,
       styleClass: "buttons-box-layout",
       xExpand: true,
       style: "spacing: 8px"
     });
+    setWidgetOrientation(boxLayout, true);
     const openMenuBtn = createButton(
       "menu-symbolic",
       _("Menu"),
@@ -5811,8 +5836,6 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
       })
     );
     this._layoutsBoxLayout = new St.BoxLayout({
-      vertical: false,
-      // horizontal box layout
       styleClass: "layouts-box-layout",
       xAlign: Clutter.ActorAlign.CENTER
     });
@@ -5837,7 +5860,7 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
     }
   }
   _makeLegendDialog(params) {
-    const suggestion1 = new St.BoxLayout({ vertical: false });
+    const suggestion1 = new St.BoxLayout();
     suggestion1.add_child(
       new St.Label({
         text: "LEFT CLICK",
@@ -5857,7 +5880,7 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
         xExpand: false
       })
     );
-    const suggestion2 = new St.BoxLayout({ vertical: false });
+    const suggestion2 = new St.BoxLayout();
     suggestion2.add_child(
       new St.Label({
         text: "LEFT CLICK",
@@ -5896,7 +5919,7 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
         xExpand: false
       })
     );
-    const suggestion3 = new St.BoxLayout({ vertical: false });
+    const suggestion3 = new St.BoxLayout();
     suggestion3.add_child(
       new St.Label({
         text: "RIGHT CLICK",
@@ -5917,7 +5940,6 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
       })
     );
     const suggestion4 = new St.BoxLayout({
-      vertical: false,
       xExpand: true,
       margin_top: 16
     });
@@ -5942,9 +5964,9 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
       })
     );
     const legend = new St.BoxLayout({
-      vertical: true,
       styleClass: "legend"
     });
+    setWidgetOrientation(legend, true);
     legend.add_child(suggestion1);
     legend.add_child(suggestion2);
     legend.add_child(suggestion3);
@@ -5972,10 +5994,10 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
     this._layoutsBoxLayout.destroy_all_children();
     params.layouts.forEach((lay, btnInd) => {
       const box2 = new St.BoxLayout({
-        vertical: true,
         xAlign: Clutter.ActorAlign.CENTER,
         styleClass: "layout-button-container"
       });
+      setWidgetOrientation(box2, true);
       this._layoutsBoxLayout.add_child(box2);
       const btn = new LayoutButton(
         box2,
@@ -6015,10 +6037,10 @@ var EditorDialog = class extends ModalDialog.ModalDialog {
       return btn;
     });
     const box = new St.BoxLayout({
-      vertical: true,
       xAlign: Clutter.ActorAlign.CENTER,
       styleClass: "layout-button-container"
     });
+    setWidgetOrientation(box, true);
     this._layoutsBoxLayout.add_child(box);
     const newLayoutBtn = new LayoutButton(
       box,
@@ -6857,9 +6879,9 @@ var OverriddenWindowMenu = class extends GObject.Object {
       yAlign: Clutter.ActorAlign.CENTER,
       xExpand: true,
       yExpand: true,
-      vertical: true,
       style: "spacing: 16px !important"
     });
+    setWidgetOrientation(container, true);
     layoutsPopupMenu.add_child(container);
     const layoutsPerRow = 4;
     const rows = [];
@@ -7574,14 +7596,6 @@ var TilingShellExtension = class extends Extension {
       focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
       return;
     }
-    const success = monitorTilingManager.onKeyboardMoveWindow(
-      focus_window,
-      direction,
-      false,
-      spanFlag
-    );
-    if (success || direction === 1 /* NODIRECTION */)
-      return;
     let displayDirection = Meta.DisplayDirection.DOWN;
     switch (direction) {
       case 4 /* LEFT */:
@@ -7598,6 +7612,16 @@ var TilingShellExtension = class extends Extension {
       focus_window.get_monitor(),
       displayDirection
     );
+    const success = monitorTilingManager.onKeyboardMoveWindow(
+      focus_window,
+      direction,
+      false,
+      spanFlag,
+      neighborMonitorIndex === -1
+      // clamp if there is NOT a monitor in this direction
+    );
+    if (success || direction === 1 /* NODIRECTION */ || neighborMonitorIndex === -1)
+      return;
     if ((focus_window.maximizedHorizontally || focus_window.maximizedVertically) && direction === 2 /* UP */) {
       Main12.wm.skipNextEffect(focus_window.get_compositor_private());
       focus_window.unmaximize(Meta.MaximizeFlags.BOTH);
@@ -7610,7 +7634,8 @@ var TilingShellExtension = class extends Extension {
       focus_window,
       direction,
       true,
-      spanFlag
+      spanFlag,
+      false
     );
   }
   _onKeyboardFocusWinDirection(display, direction) {

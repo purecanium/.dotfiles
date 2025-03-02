@@ -569,6 +569,9 @@ var Settings = class _Settings {
 };
 
 // src/utils/logger.ts
+function rect_to_string(rect) {
+  return `{x: ${rect.x}, y: ${rect.y}, width: ${rect.width}, height: ${rect.height}}`;
+}
 var logger = (prefix) => (...content) => console.log("[tilingshell]", `[${prefix}]`, ...content);
 
 // src/settings/settingsOverride.ts
@@ -1037,8 +1040,6 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
       )
     );
     windowsSuggestionsGroup.add(screenEdgesWindowSuggestionRow);
-    screenEdgesWindowSuggestionRow.set_sensitive(false);
-    screenEdgesWindowSuggestionRow.set_tooltip_text("To be released soon!");
     snapAssistWindowSuggestionRow.set_sensitive(false);
     snapAssistWindowSuggestionRow.set_tooltip_text("To be released soon!");
     prefsPage.add(windowsSuggestionsGroup);
@@ -1063,17 +1064,15 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           _("Export layouts"),
           Gtk.FileChooserAction.SAVE,
           window,
-          [
-            [_("Cancel"), Gtk.ResponseType.CANCEL],
-            [_("Save"), Gtk.ResponseType.OK]
-          ],
+          _("Save"),
+          _("Cancel"),
           new Gtk.FileFilter({
             suffixes: ["json"],
             name: "JSON"
           }),
           (_source, response_id) => {
             try {
-              if (response_id === Gtk.ResponseType.OK) {
+              if (response_id === Gtk.ResponseType.ACCEPT) {
                 const file = _source.get_file();
                 if (!file)
                   throw new Error("no file selected");
@@ -1107,7 +1106,7 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           }
         );
         fc.set_current_name("tilingshell-layouts.json");
-        fc.present();
+        fc.show();
       }
     );
     layoutsGroup.add(exportLayoutsBtn);
@@ -1120,17 +1119,15 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           _("Select layouts file"),
           Gtk.FileChooserAction.OPEN,
           window,
-          [
-            [_("Cancel"), Gtk.ResponseType.CANCEL],
-            [_("Open"), Gtk.ResponseType.OK]
-          ],
+          _("Open"),
+          _("Cancel"),
           new Gtk.FileFilter({
             suffixes: ["json"],
             name: "JSON"
           }),
           (_source, response_id) => {
             try {
-              if (response_id === Gtk.ResponseType.OK) {
+              if (response_id === Gtk.ResponseType.ACCEPT) {
                 const file = _source.get_file();
                 if (!file) {
                   _source.destroy();
@@ -1165,7 +1162,7 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
             _source.destroy();
           }
         );
-        fc.present();
+        fc.show();
       }
     );
     layoutsGroup.add(importLayoutsBtn);
@@ -1429,17 +1426,15 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           _("Export settings to a text file"),
           Gtk.FileChooserAction.SAVE,
           window,
-          [
-            [_("Cancel"), Gtk.ResponseType.CANCEL],
-            [_("Save"), Gtk.ResponseType.OK]
-          ],
+          _("Save"),
+          _("Cancel"),
           new Gtk.FileFilter({
             suffixes: ["txt"],
-            name: "Text file"
+            name: _("Text file")
           }),
           (_source, response_id) => {
             try {
-              if (response_id === Gtk.ResponseType.OK) {
+              if (response_id === Gtk.ResponseType.ACCEPT) {
                 const file = _source.get_file();
                 if (!file)
                   throw new Error("no file selected");
@@ -1474,7 +1469,7 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           }
         );
         fc.set_current_name("tilingshell-settings.txt");
-        fc.present();
+        fc.show();
       }
     );
     importExportGroup.add(exportSettingsBtn);
@@ -1487,17 +1482,15 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
           _("Select a text file to import from"),
           Gtk.FileChooserAction.OPEN,
           window,
-          [
-            [_("Cancel"), Gtk.ResponseType.CANCEL],
-            [_("Open"), Gtk.ResponseType.OK]
-          ],
+          _("Open"),
+          _("Cancel"),
           new Gtk.FileFilter({
             suffixes: ["txt"],
             name: "Text file"
           }),
           (_source, response_id) => {
             try {
-              if (response_id === Gtk.ResponseType.OK) {
+              if (response_id === Gtk.ResponseType.ACCEPT) {
                 const file = _source.get_file();
                 if (!file) {
                   _source.destroy();
@@ -1523,7 +1516,7 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
             _source.destroy();
           }
         );
-        fc.present();
+        fc.show();
       }
     );
     importExportGroup.add(importSettingsBtn);
@@ -1761,12 +1754,17 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
     adwRow.add_suffix(colorButton);
     return adwRow;
   }
-  _buildFileChooserDialog(title, action, window, buttons, filter, onResponse) {
-    const fc = new Gtk.FileChooserDialog({
+  _buildFileChooserDialog(title, action, window, accept, cancel, filter, onResponse) {
+    const fc = new Gtk.FileChooserNative({
       title,
       action,
       select_multiple: false,
-      transientFor: window
+      modal: true,
+      accept_label: accept,
+      cancel_label: cancel
+    });
+    window.connect("map", () => {
+      fc.set_transient_for(window);
     });
     const [major] = Config.PACKAGE_VERSION.split(".").map(
       (s) => Number(s)
@@ -1774,7 +1772,6 @@ var TilingShellExtensionPreferences = class extends ExtensionPreferences {
     if (major >= 43)
       fc.set_filter(filter);
     fc.set_current_folder(Gio.File.new_for_path(GLib.get_home_dir()));
-    buttons.forEach(([name, type]) => fc.add_button(name, type));
     fc.connect("response", onResponse);
     return fc;
   }
@@ -1797,7 +1794,7 @@ var ShortcutSettingButton = (_a = class extends Gtk.Button {
     this._gioSettings = gioSettings;
     this._editor = null;
     this._label = new Gtk.ShortcutLabel({
-      disabled_text: "New accelerator\u2026",
+      disabled_text: _("New accelerator\u2026"),
       valign: Gtk.Align.CENTER,
       hexpand: false,
       vexpand: false
@@ -1820,10 +1817,10 @@ var ShortcutSettingButton = (_a = class extends Gtk.Button {
   _onActivated(widget) {
     const ctl = new Gtk.EventControllerKey();
     const content = new Adw.StatusPage({
-      title: "New accelerator\u2026",
+      title: _("New accelerator\u2026"),
       // description: this._description,
       icon_name: "preferences-desktop-keyboard-shortcuts-symbolic",
-      description: "Use Backspace to clear"
+      description: _("Use Backspace to clear")
     });
     this._editor = new Adw.Window({
       modal: true,

@@ -24,7 +24,7 @@ export default class QSAPPreferences extends ExtensionPreferences {
         main_group.add_combobox("panel-type", {
             title: _("Where the panel should be"),
             fields: [
-                ["independent-panel", _("Independant panel")],
+                ["independent-panel", _("Independent panel")],
                 ["merged-panel", _("In the main panel")],
                 ["separate-indicator", _("In a separate indicator")],
             ],
@@ -53,6 +53,10 @@ export default class QSAPPreferences extends ExtensionPreferences {
         main_group.add_switch("master-volume-sliders-show-current-device", {
             title: _("Show the currently selected device for the main volume sliders"),
         });
+        main_group.add_switch("add-button-applications-output-reset-to-default", {
+            title: _("Add a button to reset all applications to the default output"),
+            subtitle: _("This button can be found in the device chooser of the main output slider")
+        });
         main_group.add_switch("ignore-css", {
             title: _("Do not apply custom CSS"),
             subtitle: _("Disable the CSS in this extension that could override your theme")
@@ -64,7 +68,7 @@ export default class QSAPPreferences extends ExtensionPreferences {
         const profile_switcher_group = new ListBox(settings);
         profile_switcher_group.add_switch("autohide-profile-switcher", {
             title: _("Auto-hide"),
-            subtitle: _("Hide the profile switcher when the current device only have one profile")
+            subtitle: _("Hide the profile switcher when the current device only has one profile")
         });
         const mpris_controllers_group = new ListBox(settings);
         mpris_controllers_group.add_switch("mpris-controllers-are-moved", {
@@ -142,13 +146,13 @@ export default class QSAPPreferences extends ExtensionPreferences {
         // ======================== Perdevice volume sliders filters group ========================
         const perdevice_volume_sliders_filters_group = new FilterPreferencesGroup(settings, "perdevice-volume-sliders-filters", "perdevice-volume-sliders-filter-mode", {
             title: _("Per-device sliders filtering"),
-            description: _("Allow you to filter the per-device volume sliders. The content of the filters are <b>regexes</b> and are applied to the device's display name and pulseaudio name."),
+            description: _("Allows you to filter the per-device volume sliders. The content of the filters are <b>regexes</b> and are applied to the device's display name and pulseaudio name."),
             placeholder: _("Device name"),
         });
         // ======================= Applications volume sliders filters group ======================
         const applications_volume_sliders_filters_group = new FilterPreferencesGroup(settings, "applications-volume-sliders-filters", "applications-volume-sliders-filter-mode", {
             title: _("Application mixer filtering"),
-            description: _("Allow you to filter the applications that show up in the application mixer <b>using regexes</b>"),
+            description: _("Allows you to filter the applications that show up in the application mixer <b>using regexes</b>"),
             placeholder: _("Application name"),
         });
         page.add(main_group);
@@ -164,7 +168,7 @@ export default class QSAPPreferences extends ExtensionPreferences {
         });
         const group = new PreferencesGroup(settings, {
             title: _("LibPanel settings"),
-            description: _("Those settings are not specific to this extension, they apply to every panels"),
+            description: _("These settings are not specific to this extension, they apply to every panel"),
         });
         group.add_switch("single-column", {
             title: _("Single-column mode"),
@@ -273,10 +277,10 @@ const FilterPreferencesGroup = GObject.registerClass(class FilterPreferencesGrou
         super(settings, { ...props, header_suffix: add_filter_button });
         this.add_combobox(mode_key, {
             title: _("Filtering mode"),
-            subtitle: _("On blacklist mode, matching elements are removed from the list. On whitelist mode, only matching elements will be shown"),
+            subtitle: _("On blocklist mode, matching elements are removed from the list. On allowlist mode, only matching elements will be shown"),
             fields: [
-                ['blacklist', _("Blacklist")],
-                ['whitelist', _("Whitelist")],
+                ['blacklist', _("Blocklist")],
+                ['whitelist', _("Allowlist")],
             ]
         });
         this._key = key;

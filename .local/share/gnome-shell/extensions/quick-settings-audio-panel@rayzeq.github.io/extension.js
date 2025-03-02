@@ -14,16 +14,20 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Gvc from 'gi://Gvc';
 import St from 'gi://St';
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+import { gettext as _, Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import { MediaSection } from 'resource:///org/gnome/shell/ui/mpris.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import { QuickSettingsMenu } from 'resource:///org/gnome/shell/ui/quickSettings.js';
+import * as Volume from 'resource:///org/gnome/shell/ui/status/volume.js';
 import { LibPanel, Panel } from './libs/libpanel/main.js';
 import { update_settings } from './libs/preferences.js';
-import { ApplicationsMixer, ApplicationsMixerToggle, AudioProfileSwitcher, BalanceSlider, SinkMixer, waitProperty } from './libs/widgets.js';
+import { cleanup_idle_ids, get_pactl_path, wait_property } from './libs/utils.js';
+import { ApplicationsMixer, ApplicationsMixerToggle, AudioProfileSwitcher, BalanceSlider, SinkMixer } from './libs/widgets.js';
 const DateMenu = Main.panel.statusArea.dateMenu;
 const QuickSettings = Main.panel.statusArea.quickSettings;
 const CalendarMessageList = DateMenu._messageList;
@@ -34,7 +38,7 @@ const OutputVolumeSlider = QuickSettings._volumeOutput._output;
 export default class QSAP extends Extension {
     settings;
     async enable() {
-        this.InputVolumeIndicator = await waitProperty(QuickSettings, '_volumeInput');
+        this.InputVolumeIndicator = await wait_property(QuickSettings, '_volumeInput');
         this.InputVolumeSlider = this.InputVolumeIndicator._input;
         this.settings = this.getSettings();
         update_settings(this.settings);
@@ -51,6 +55,15 @@ export default class QSAP extends Extension {
             }
         });
         this.settings.emit('changed::master-volume-sliders-show-current-device', 'master-volume-sliders-show-current-device');
+        this._scabaortd_callback = this.settings.connect('changed::add-button-applications-output-reset-to-default', () => {
+            if (this.settings.get_boolean('add-button-applications-output-reset-to-default')) {
+                this._add_reset_applications_output();
+            }
+            else {
+                this._remove_reset_applications_output();
+            }
+        });
+        this.settings.emit('changed::add-button-applications-output-reset-to-default', 'add-button-applications-output-reset-to-default');
         this._master_volumes = [];
         this._sc_callback = this.settings.connect('changed', (_, name) => {
             if (name !== "autohide-profile-switcher") {
@@ -63,12 +76,11 @@ export default class QSAP extends Extension {
         this.settings.disconnect(this._scscd_callback);
         this._unpatch_show_current_device(OutputVolumeSlider);
         this._unpatch_show_current_device(this.InputVolumeSlider);
+        this.settings.disconnect(this._scabaortd_callback);
+        this._remove_reset_applications_output();
         this.settings.disconnect(this._scasis_callback);
         this.settings.disconnect(this._sc_callback);
-        for (const id of waitProperty.idle_ids) {
-            GLib.Source.remove(id);
-        }
-        waitProperty.idle_ids = null;
+        cleanup_idle_ids();
         this._set_always_show_input(false);
         this._cleanup_panel();
         this.settings = null;
@@ -386,5 +398,27 @@ export default class QSAP extends Extension {
         delete slider._iconButton._qsap_y_expand;
         delete slider._iconButton._qsap_y_align;
         delete slider._menuButton._qsap_y_expand;
+    }
+    _add_reset_applications_output() {
+        this._action_application_reset_output = OutputVolumeSlider.menu.addAction(_("Reset all applications to default output"), () => {
+            const control = Volume.getMixerControl();
+            for (const stream of control.get_streams()) {
+                if (stream.is_event_stream || !(stream instanceof Gvc.MixerSinkInput)) {
+                    continue;
+                }
+                GLib.spawn_command_line_async(`${get_pactl_path(this.settings)[0]} move-sink-input ${stream.index} @DEFAULT_SINK@`);
+            }
+            if (this._applications_mixer) {
+                for (const slider of this._applications_mixer._slider_manager._sliders.values()) {
+                    slider._checkUsedSink();
+                }
+            }
+        });
+    }
+    _remove_reset_applications_output() {
+        if (this._action_application_reset_output) {
+            this._action_application_reset_output.destroy();
+        }
+        delete this._action_application_reset_output;
     }
 }

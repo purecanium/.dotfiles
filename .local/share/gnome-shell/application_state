@@ -1,42 +1,31 @@
 <?xml version="1.0"?>
 <application-state>
   <context id="">
-    <application id="org.gnome.TextEditor.desktop" score="691.5" last-seen="1738016654"/>
-    <application id="xdg-desktop-portal-gnome.desktop" score="1" last-seen="1738016769"/>
-    <application id="com.mattjakeman.ExtensionManager.desktop" score="87.5" last-seen="1738047113"/>
-    <application id="org.gnome.Weather.desktop" score="2" last-seen="1738010749"/>
-    <application id="org.gnome.tweaks.desktop" score="31.5" last-seen="1738033252"/>
-    <application id="chromium.desktop" score="177" last-seen="1738051452"/>
-    <application id="vlc.desktop" score="809" last-seen="1738033161"/>
-    <application id="org.gnome.Music.desktop" score="2" last-seen="1737575852"/>
-    <application id="org.gnome.Shell.Extensions.GSConnect.Preferences.desktop" score="25" last-seen="1737962964"/>
-    <application id="firefox.desktop" score="10288" last-seen="1738031876"/>
-    <application id="Firefox Formal.desktop" score="29" last-seen="1738032942"/>
-    <application id="qt5ct.desktop" score="9" last-seen="1737964292"/>
-    <application id="Firefox Casual.desktop" score="8685" last-seen="1738051995"/>
-    <application id="org.gnome.Contacts.desktop" score="1" last-seen="1738018792"/>
-    <application id="org.gnome.Software.desktop" score="265.5" last-seen="1738036731"/>
-    <application id="steam.desktop" score="27" last-seen="1738043500"/>
-    <application id="gnome-wifi-panel.desktop" score="0" last-seen="0"/>
-    <application id="org.gnome.Console.desktop" score="12127" last-seen="1738051951"/>
-    <application id="io.github.giantpinkrobots.varia.desktop" score="15" last-seen="1737965298"/>
-    <application id="org.gnome.Settings.desktop" score="4592.5" last-seen="1738050441"/>
-    <application id="org.gnome.Extensions.desktop" score="7" last-seen="1737961113"/>
-    <application id="org.gnome.Calculator.desktop" score="1.5" last-seen="1737594055"/>
-    <application id="org.keepassxc.KeePassXC.desktop" score="31.5" last-seen="1737858926"/>
-    <application id="io.github.Foldex.AdwSteamGtk.desktop" score="4" last-seen="1738033435"/>
-    <application id="org.gnome.Loupe.desktop" score="198.5" last-seen="1737963259"/>
-    <application id="org.gnome.Shell.Extensions.desktop" score="157" last-seen="1738046811"/>
-    <application id="org.qbittorrent.qBittorrent.desktop" score="27" last-seen="1737964476"/>
-    <application id="qt6ct.desktop" score="2" last-seen="1738009953"/>
-    <application id="io.github.realmazharhussain.GdmSettings.desktop" score="12.5" last-seen="1737968375"/>
-    <application id="org.gnome.Nautilus.desktop" score="1995" last-seen="1738051699"/>
-    <application id="com.obsproject.Studio.desktop" score="40" last-seen="1738033104"/>
-    <application id="org.gnome.Snapshot.desktop" score="12" last-seen="1737593565"/>
-    <application id="yelp.desktop" score="0" last-seen="1737753944"/>
-    <application id="com.github.xeco23.WasIstLos.desktop" score="627.5" last-seen="1738047827"/>
-    <application id="org.gnome.Totem.desktop" score="8.5" last-seen="1737652704"/>
-    <application id="zen.desktop" score="1073" last-seen="1738051998"/>
-    <application id="gparted.desktop" score="19" last-seen="1737593983"/>
+    <application id="winegui.desktop" score="5" last-seen="1740845664"/>
+    <application id="org.gnome.TextEditor.desktop" score="35.7421875" last-seen="1740887047"/>
+    <application id="wine-Programs-WinRAR-WinRAR.desktop" score="26.375" last-seen="1740840564"/>
+    <application id="firefox.desktop" score="17965.109375" last-seen="1740889489"/>
+    <application id="org.gnome.tweaks.desktop" score="8.5" last-seen="1740570401"/>
+    <application id="vlc.desktop" score="8" last-seen="1740833081"/>
+    <application id="wine-Programs-BioEdit-BioEdit.desktop" score="8.125" last-seen="1740626527"/>
+    <application id="org.gnome.Characters.desktop" score="1.5" last-seen="1740595916"/>
+    <application id="discord.desktop" score="12" last-seen="1740625342"/>
+    <application id="onlyoffice-desktopeditors.desktop" score="0" last-seen="1740817114"/>
+    <application id="net.lutris.Lutris.desktop" score="4.375" last-seen="1740625133"/>
+    <application id="codium-wayland.desktop" score="4.5" last-seen="1740595894"/>
+    <application id="org.gnome.Console.desktop" score="4940.796875" last-seen="1740889468"/>
+    <application id="org.gnome.Settings.desktop" score="899.2265625" last-seen="1740845799"/>
+    <application id="org.gnome.Calculator.desktop" score="12" last-seen="1740626042"/>
+    <application id="com.github.persepolisdm.persepolis.desktop" score="0" last-seen="1740538762"/>
+    <application id="org.keepassxc.KeePassXC.desktop" score="7" last-seen="1740889358"/>
+    <application id="org.gnome.Loupe.desktop" score="135.5390625" last-seen="1740840531"/>
+    <application id="org.gnome.Shell.Extensions.desktop" score="4" last-seen="1740627076"/>
+    <application id="org.gnome.Calendar.desktop" score="1" last-seen="1740815586"/>
+    <application id="org.qbittorrent.qBittorrent.desktop" score="41" last-seen="1740833266"/>
+    <application id="org.gnome.Nautilus.desktop" score="568.578125" last-seen="1740889397"/>
+    <application id="wine-Programs-Ubisoft-Uplay-Uninstall.desktop" score="0" last-seen="1740760723"/>
+    <application id="gparted.desktop" score="1" last-seen="1740816412"/>
+    <application id="org.gnome.Snapshot.desktop" score="1" last-seen="1740820503"/>
+    <application id="com.github.xeco23.WasIstLos.desktop" score="2104.5" last-seen="1740888512"/>
   </context>
 </application-state>

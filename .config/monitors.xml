@@ -19,6 +19,41 @@
           <rate>59.997</rate>
         </mode>
       </monitor>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>SEC</vendor>
+          <product>EPSON PJ</product>
+          <serial>0x01010101</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>eDP-1</connector>
+          <vendor>SDC</vendor>
+          <product>0x4161</product>
+          <serial>0x00000000</serial>
+        </monitorspec>
+        <mode>
+          <width>1920</width>
+          <height>1080</height>
+          <rate>59.997</rate>
+        </mode>
+      </monitor>
     </logicalmonitor>
   </configuration>
 </monitors>
